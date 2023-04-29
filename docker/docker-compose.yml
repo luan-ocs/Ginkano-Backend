@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ginkano_db
+      POSTGRES_PASSWORD: ginkano123
+      POSTGRES_DB: db_ginkano
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
