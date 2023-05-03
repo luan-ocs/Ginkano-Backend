@@ -40,7 +40,8 @@ fk_id_categoria INTEGER REFERENCES categoria(id)
 CREATE TABLE responsavel (
 id SERIAL PRIMARY KEY,
 nome VARCHAR(255) NOT NULL,
-ocupacao VARCHAR(255) NOT NULL
+ocupacao VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE doacao (
@@ -83,7 +84,6 @@ INSERT INTO tipo (descricao) VALUES
 ('Livro'),
 ('Brinquedo');
 
-
 INSERT INTO categoria (descricao, fk_tipo) VALUES
 ('Celular', 1),
 ('Camisa', 2),
@@ -96,12 +96,17 @@ INSERT INTO produto (descricao, pt_produto, bonus, fk_id_categoria) VALUES
 ('O Código da Vinci', 49.99, 2, 3),
 ('Hot Wheels', 9.99, 1, 4);
 
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('João da Silva', 'Engenheiro', 'senha123');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Maria Santos', 'Advogada', 'abcd456');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Carlos Rodrigues', 'Médico', 'senha789');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Ana Costa', 'Jornalista', 'senha456');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Pedro Oliveira', 'Professor', 'senha1a2b');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Sandra Almeida', 'Arquiteta', 'qwe123');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Ricardo Sousa', 'Fotógrafo', 'senhaqwe');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Juliana Fernandes', 'Vendedora', 'abc123xyz');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Fernando Santos', 'Analista de Sistemas', 'senha4567');
+INSERT INTO responsavel (nome, ocupacao, password) VALUES ('Luciana Souza', 'Estudante', '1234abcd');
 
-INSERT INTO responsavel (nome, ocupacao) VALUES
-('José', 'Engenheiro'),
-('Fernanda', 'Advogada'),
-('Carlos', 'Médico'),
-('Mariana', 'Professora');
 
 INSERT INTO doacao (descricao, quant_itens, fk_aluno, fk_responsavel, fk_produto) VALUES
 ('Doação 1', 3, 1, 1, 1),
