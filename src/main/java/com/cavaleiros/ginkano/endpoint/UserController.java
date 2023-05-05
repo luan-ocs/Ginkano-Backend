@@ -4,7 +4,6 @@ import com.cavaleiros.ginkano.adapter.ErrorResponseAdapter;
 import com.cavaleiros.ginkano.core.domain.response.BodyResponse;
 import com.cavaleiros.ginkano.core.domain.response.UserResponse;
 import com.cavaleiros.ginkano.core.domain.response.UserTokenResponse;
-import com.cavaleiros.ginkano.core.domain.response.error.ErrorResponse;
 import com.cavaleiros.ginkano.usecase.RegisterUserUsecase;
 import com.cavaleiros.ginkano.usecase.UserUsecase;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 @Slf4j
 public class UserController {
 
@@ -49,7 +49,5 @@ public class UserController {
         }catch (Exception e){
             return ResponseEntity.badRequest().body(ErrorResponseAdapter.toErrorResponse(e, "400"));
         }
-
-
     }
 }
