@@ -8,7 +8,6 @@ import com.cavaleiros.ginkano.exception.UseCaseException;
 import com.cavaleiros.ginkano.usecase.AuthUsecase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -21,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class AuthController {
 
-    @Autowired
-    private AuthUsecase authUsecase;
+    private final AuthUsecase authUsecase;
 
     @GetMapping(value = "/auth")
     public ResponseEntity<BodyResponse> getPersonaDomain(
@@ -35,7 +33,7 @@ public class AuthController {
         } catch (UseCaseException e){
             return ResponseEntity.internalServerError().body(ErrorResponseAdapter.toErrorResponse(e, "500"));
         } catch (InvalidPasswordException e){
-            return ResponseEntity.badRequest().body(ErrorResponseAdapter.toErrorResponse(e, "404"));
+            return ResponseEntity.badRequest().body(ErrorResponseAdapter.toErrorResponse(e, "400"));
         }
     }
 }

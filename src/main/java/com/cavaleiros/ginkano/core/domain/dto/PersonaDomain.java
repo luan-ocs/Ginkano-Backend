@@ -13,10 +13,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public abstract class PersonaDomain {
 
-    String nome;
     String username;
     String firstname;
     String lastname;
-    String confirm;
-    boolean conditions;
 }

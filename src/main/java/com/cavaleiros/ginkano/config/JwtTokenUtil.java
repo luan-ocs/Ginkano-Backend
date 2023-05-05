@@ -7,6 +7,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +59,7 @@ public class JwtTokenUtil {
         //Cria o token e devine tempo de expiração pra ele
         private String doGenerateToken(Map<String, Object> claims, String subject) {
             return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                    .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                    .setExpiration(Date.from(Instant.now().plusMillis(JWT_TOKEN_VALIDITY * 1000)))
                     .signWith(SignatureAlgorithm.HS512, secret).compact();
         }
 

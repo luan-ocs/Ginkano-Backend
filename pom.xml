@@ -68,4 +68,12 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<spring.profile>docker</spring.profile>
+			</properties>
+		</profile>
+	</profiles>
 </project>

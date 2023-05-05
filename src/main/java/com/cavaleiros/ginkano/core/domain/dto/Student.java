@@ -14,6 +14,6 @@ public class Student extends PersonaDomain{
     LivingRoom sala;
 
     public Student(String nome, String username, String firstname, String lastname, String confirm, boolean conditions) {
-        super(nome, username, firstname, lastname, confirm, conditions);
+        super(username, firstname, lastname);
     }
 }

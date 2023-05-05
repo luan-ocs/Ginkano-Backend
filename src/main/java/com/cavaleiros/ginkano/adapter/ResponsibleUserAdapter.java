@@ -4,7 +4,6 @@ import com.cavaleiros.ginkano.core.domain.dto.ResponsibleUser;
 import com.cavaleiros.ginkano.core.entity.Responsavel;
 
 import java.text.Normalizer;
-import java.time.LocalDate;
 
 public class ResponsibleUserAdapter {
 
@@ -13,28 +12,12 @@ public class ResponsibleUserAdapter {
 
         return ResponsibleUser.builder()
                 .ocupacao(responsavel.getOcupacao())
-                .password(responsavel.getPassword())
-                .nome(responsavel.getNome())
-                .conditions(true)
-                .username(getUsename(responsavel))
-                .confirm(LocalDate.now().toString())
-                .firstname(getFirstname(responsavel))
-                .lastname(getLastname(responsavel)).build();
-
+                .username(responsavel.getUsername())
+                .firstname(responsavel.getFirstname())
+                .lastname(responsavel.getLastname()).build();
     }
 
-    private static String getLastname(Responsavel responsavel){
-        String [] words = responsavel.getNome().split(" ");
-        return words[words.length-1];
+    public static Responsavel createrResponsavel(String username, String firstname, String lastname, Integer conditions, String ocupacao, String password){
+        return new Responsavel(username, firstname, lastname, conditions, ocupacao, password);
     }
-
-    private static String getFirstname(Responsavel responsavel){
-        return responsavel.getNome().split(" ")[0];
-    }
-
-    private static String getUsename(Responsavel responsavel){
-        String str = (getFirstname(responsavel)+getLastname(responsavel)).toLowerCase();
-        return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
-    }
-
 }

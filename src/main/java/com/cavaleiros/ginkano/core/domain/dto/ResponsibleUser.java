@@ -10,9 +10,8 @@ import lombok.experimental.SuperBuilder;
 public class ResponsibleUser extends PersonaDomain{
 
     String ocupacao;
-    String password;
 
-    public ResponsibleUser(String nome, String username, String firstname, String lastname, String confirm, boolean conditions) {
-        super(nome, username, firstname, lastname, confirm, conditions);
+    public ResponsibleUser(String nome, String username, String firstname, String lastname) {
+        super(username, firstname, lastname);
     }
 }

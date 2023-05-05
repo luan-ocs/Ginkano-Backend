@@ -16,15 +16,20 @@ public class Responsavel {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
-    String nome;
+    String username;
+    String firstname;
+    String lastname;
+    Integer conditions;
     String ocupacao;
     String password;
 
     public Responsavel(){}
 
-    public Responsavel(Long id, String nome, String ocupacao, String password) {
-        this.id = id;
-        this.nome = nome;
+    public Responsavel(String username, String firstname, String lastname, Integer conditions, String ocupacao, String password) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.conditions = conditions;
         this.ocupacao = ocupacao;
         this.password = password;
     }

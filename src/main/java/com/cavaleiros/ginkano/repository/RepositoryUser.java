@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositoryUser extends JpaRepository<Responsavel, Integer> {
 
-    Responsavel findResponsavelByNome(String nome);
+    Responsavel findResponsavelByUsername(String username);
 }

@@ -19,17 +19,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthUsecaseImpl implements AuthUsecase {
 
-    @Autowired
-    RepositoryUser repositoryUser;
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    private final RepositoryUser repositoryUser;
+    private final JwtTokenUtil jwtTokenUtil;
 
     @Override
     public UserTokenResponse execute(String username, String password) throws UseCaseException, InvalidPasswordException {
 
         try {
-            Responsavel responsavel = repositoryUser.findResponsavelByNome(username);
+            Responsavel responsavel = repositoryUser.findResponsavelByUsername(username);
             validatedPassword(password, responsavel);
 
             ResponsibleUser responsibleUser = ResponsibleUserAdapter.toResponsibleUser(responsavel);
@@ -45,8 +42,8 @@ public class AuthUsecaseImpl implements AuthUsecase {
             log.info("[AuthUsecase] - Senha Incorreta");
            throw new InvalidPasswordException("Senha inválida");
         }catch (Exception e) {
-            log.info("[AuthUsecase] - Erro no usecase");
-            throw new UseCaseException("Ocorreu um erro no usecase de Auth");
+            log.info("[AuthUsecase] - Erro no usecase", e);
+            throw new UseCaseException("Ocorreu um erro no usecase de Auth", e);
         }
     }
 
