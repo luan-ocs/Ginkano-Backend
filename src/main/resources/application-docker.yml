@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    password: ginkano123
+    url: jdbc:postgresql://db-ginkano:5432/db_ginkano
+    username: ginkano_db

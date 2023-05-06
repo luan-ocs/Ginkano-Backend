@@ -4,3 +4,15 @@ spring:
     password: ginkano123
     url: jdbc:postgresql://localhost:5432/db_ginkano
     username: ginkano_db
+
+server:
+  max-http-header-size: 40KB
+  port: 8080
+  servlet:
+    context-path: /ginkano-be
+    encoding:
+      charset: UTF-8
+      force: true
+  shutdown: graceful
+
+jwt.secret: "ginkano_secret"

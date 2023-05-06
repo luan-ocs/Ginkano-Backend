@@ -1,7 +1,8 @@
 CREATE TABLE escola (
 id SERIAL PRIMARY KEY,
 nome VARCHAR(255) NOT NULL,
-endereco VARCHAR(255) NOT NULL
+endereco VARCHAR(255) NOT NULL,
+token VARCHAR(5) NOT NULL
 );
 
 CREATE TABLE sala (
@@ -39,8 +40,12 @@ fk_id_categoria INTEGER REFERENCES categoria(id)
 
 CREATE TABLE responsavel (
 id SERIAL PRIMARY KEY,
-nome VARCHAR(255) NOT NULL,
-ocupacao VARCHAR(255) NOT NULL
+firstname VARCHAR(255) NOT NULL,
+lastname VARCHAR(255) NOT NULL,
+conditions INTEGER NOT NULL,
+ocupacao VARCHAR(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+username VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE doacao (
@@ -58,11 +63,11 @@ fk_produto INTEGER REFERENCES produto(id),
 fk_doacao INTEGER REFERENCES doacao(id)
 );
 
-INSERT INTO escola (nome, endereco) VALUES
-('Escola Municipal 1', 'Rua A, 123'),
-('Escola Estadual 2', 'Avenida B, 456'),
-('Escola Particular 3', 'Rua C, 789'),
-('Escola Municipal 4', 'Avenida D, 321');
+INSERT INTO escola (nome, endereco, token) VALUES ('Escola Municipal São João', 'Rua das Flores, 123', 'abc12');
+INSERT INTO escola (nome, endereco, token) VALUES ('Escola Estadual Carlos Drummond de Andrade', 'Avenida Brasil, 567', 'def34');
+INSERT INTO escola (nome, endereco, token) VALUES ('Colégio Particular Santo Antônio', 'Rua São Paulo, 890', 'ghi56');
+INSERT INTO escola (nome, endereco, token) VALUES ('Escola Municipal Monteiro Lobato', 'Avenida Rio de Janeiro, 321', 'jkl78');
+INSERT INTO escola (nome, endereco, token) VALUES ('Escola Estadual Machado de Assis', 'Rua dos Cravos, 456', 'mno90');
 
 INSERT INTO sala (descricao, num_sala) VALUES
 ('Sala 1', 101),
@@ -83,7 +88,6 @@ INSERT INTO tipo (descricao) VALUES
 ('Livro'),
 ('Brinquedo');
 
-
 INSERT INTO categoria (descricao, fk_tipo) VALUES
 ('Celular', 1),
 ('Camisa', 2),
@@ -96,12 +100,18 @@ INSERT INTO produto (descricao, pt_produto, bonus, fk_id_categoria) VALUES
 ('O Código da Vinci', 49.99, 2, 3),
 ('Hot Wheels', 9.99, 1, 4);
 
+INSERT INTO responsavel (firstname, lastname, conditions, ocupacao, password, username)
+VALUES ('João', 'Silva', 1, 'Médico', '123456', 'joaosilva');
 
-INSERT INTO responsavel (nome, ocupacao) VALUES
-('José', 'Engenheiro'),
-('Fernanda', 'Advogada'),
-('Carlos', 'Médico'),
-('Mariana', 'Professora');
+INSERT INTO responsavel (firstname, lastname, conditions, ocupacao, password, username)
+VALUES ('Maria', 'Pereira', 1, 'Enfermeira', 'abcdef', 'mariapereira');
+
+INSERT INTO responsavel (firstname, lastname, conditions, ocupacao, password, username)
+VALUES ('José', 'Ribeiro', 1, 'Médico', 'qwerty', 'joseribeiro');
+
+INSERT INTO responsavel (firstname, lastname, conditions, ocupacao, password, username)
+VALUES ('Ana', 'Gomes', 1, 'Oncologista', 'senha123', 'anagomes');
+
 
 INSERT INTO doacao (descricao, quant_itens, fk_aluno, fk_responsavel, fk_produto) VALUES
 ('Doação 1', 3, 1, 1, 1),
