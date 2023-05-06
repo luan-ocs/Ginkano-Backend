@@ -1,6 +1,7 @@
 package com.cavaleiros.ginkano.endpoint;
 
 import com.cavaleiros.ginkano.adapter.ErrorResponseAdapter;
+import com.cavaleiros.ginkano.core.domain.response.Auth;
 import com.cavaleiros.ginkano.core.domain.response.BodyResponse;
 import com.cavaleiros.ginkano.core.domain.response.UserTokenResponse;
 import com.cavaleiros.ginkano.exception.InvalidPasswordException;
@@ -19,13 +20,11 @@ public class AuthController {
 
     private final AuthUsecase authUsecase;
 
-    @GetMapping(value = "/auth")
+    @PostMapping(value = "/auth")
     public ResponseEntity<BodyResponse> getPersonaDomain(
-            @RequestHeader(value = "username") final String username,
-            @RequestHeader(value = "password") final String password){
-
+            @RequestBody final Auth auth) {
         try {
-            UserTokenResponse userTokenResponse = authUsecase.execute(username, password);
+            UserTokenResponse userTokenResponse = authUsecase.execute(auth.getUsername(), auth.getPassword());
             return ResponseEntity.ok(userTokenResponse);
         } catch (UseCaseException e){
             return ResponseEntity.internalServerError().body(ErrorResponseAdapter.toErrorResponse(e, "500"));
