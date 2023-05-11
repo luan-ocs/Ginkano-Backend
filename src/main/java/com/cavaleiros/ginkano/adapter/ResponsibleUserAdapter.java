@@ -1,6 +1,7 @@
 package com.cavaleiros.ginkano.adapter;
 
 import com.cavaleiros.ginkano.core.domain.dto.ResponsibleUser;
+import com.cavaleiros.ginkano.core.domain.request.RegisterUser;
 import com.cavaleiros.ginkano.core.entity.Responsavel;
 
 import java.text.Normalizer;
@@ -17,7 +18,7 @@ public class ResponsibleUserAdapter {
                 .lastname(responsavel.getLastname()).build();
     }
 
-    public static Responsavel createrResponsavel(String username, String firstname, String lastname, Integer conditions, String ocupacao, String password){
-        return new Responsavel(username, firstname, lastname, conditions, ocupacao, password);
+    public static Responsavel createrResponsavel(RegisterUser user){
+        return new Responsavel(user.getUsername(), user.getFirstname(), user.getLastname(), user.getConditions(), user.getOcupacao(), user.getPassword());
     }
 }

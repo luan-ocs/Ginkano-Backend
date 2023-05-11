@@ -1,6 +1,7 @@
 package com.cavaleiros.ginkano.endpoint;
 
 import com.cavaleiros.ginkano.adapter.ErrorResponseAdapter;
+import com.cavaleiros.ginkano.core.domain.request.RegisterUser;
 import com.cavaleiros.ginkano.core.domain.response.*;
 import com.cavaleiros.ginkano.usecase.RegisterUserUsecase;
 import com.cavaleiros.ginkano.usecase.SchoolUsecase;
@@ -22,16 +23,11 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<BodyResponse> registerUser(
-            @RequestHeader final String username,
-            @RequestHeader final String password,
-            @RequestHeader final String firstname,
-            @RequestHeader final String lastname,
-            @RequestHeader final String ocupacao,
-            @RequestHeader final Integer conditions
+            @RequestBody final RegisterUser user
     ){
 
         try{
-            UserTokenResponse userTokenResponse = registerUser.execute(username, firstname, lastname, conditions, ocupacao, password);
+            UserTokenResponse userTokenResponse = registerUser.execute(user);
             return ResponseEntity.ok().body(userTokenResponse);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(ErrorResponseAdapter.toErrorResponse(e, "400"));
