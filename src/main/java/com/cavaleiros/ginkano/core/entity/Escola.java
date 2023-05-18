@@ -1,14 +1,16 @@
 package com.cavaleiros.ginkano.core.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "escola")
 @Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Escola {
 
     @Id
@@ -17,10 +19,6 @@ public class Escola {
     String nome;
     String token;
     String endereco;
+    Integer ativo;
 
-    public Escola() {}
-    public Escola(String nome, String endereco) {
-        this.nome = nome;
-        this.endereco = endereco;
-    }
 }
