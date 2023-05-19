@@ -11,5 +11,5 @@ import java.time.LocalDate;
 public class ErrorResponse implements BodyResponse {
 
     ErrorDetail error;
-    LocalDate date;
+    String date;
 }

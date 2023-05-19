@@ -21,9 +21,8 @@ import java.util.*;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class GroupUsecaseImpl implements GroupUsecase {
+public class GroupUsecaseImpl extends BaseUsecase implements GroupUsecase {
 
-    private final JwtTokenUtil jwtTokenUtil;
     private final RepositorySchool repositorySchool;
 
     @Override
@@ -87,25 +86,5 @@ public class GroupUsecaseImpl implements GroupUsecase {
 
         repositorySchool.save(escola);
         return GroupResponse.builder().group(GroupAdapter.toSchool(escola)).build();
-    }
-
-    public void validatedToken(String auth) throws InvalidTokenException {
-        Date expirationDate = jwtTokenUtil.getExpirationDateFromToken(auth);
-        if(expirationDate.before(Date.from(Instant.now()))){
-            throw new InvalidTokenException("Token expirado ou invalido");
-        }
-    }
-
-    public static String generateHexSet() {
-        Set<String> set = new HashSet<>();
-        Random random = new Random();
-
-        while (set.size() < 5) {
-            int randomNumber = random.nextInt(16);
-            String hexDigit = Integer.toHexString(randomNumber).toUpperCase();
-            set.add(hexDigit);
-        }
-
-        return String.join("", set);
     }
 }

@@ -3,7 +3,7 @@ package com.cavaleiros.ginkano.usecase.impl;
 import com.cavaleiros.ginkano.adapter.ResponsibleUserAdapter;
 import com.cavaleiros.ginkano.config.JwtTokenUtil;
 import com.cavaleiros.ginkano.core.domain.dto.ResponsibleUser;
-import com.cavaleiros.ginkano.core.domain.request.RegisterUser;
+import com.cavaleiros.ginkano.core.domain.request.RegisterUserRequest;
 import com.cavaleiros.ginkano.core.domain.response.UserTokenResponse;
 import com.cavaleiros.ginkano.core.entity.Responsavel;
 import com.cavaleiros.ginkano.exception.UsernameInvalidException;
@@ -23,7 +23,7 @@ public class RegisterUserImpl implements RegisterUserUsecase {
     private final JwtTokenUtil jwtTokenUtil;
 
     @Override
-    public UserTokenResponse execute(RegisterUser user) throws UsernameInvalidException {
+    public UserTokenResponse execute(RegisterUserRequest user) throws UsernameInvalidException {
 
         Responsavel checkUsername = repositoryUser.findResponsavelByUsername(user.getUsername());
         if(!ObjectUtils.isEmpty(checkUsername)){

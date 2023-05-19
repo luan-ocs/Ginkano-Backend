@@ -11,5 +11,6 @@ import lombok.Setter;
 public class UserTokenResponse implements BodyResponse{
 
     PersonaDomain data;
+    String date;
     String jwtToken;
 }

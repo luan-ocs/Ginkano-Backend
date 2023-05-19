@@ -11,8 +11,9 @@ import com.cavaleiros.ginkano.repository.RepositoryUser;
 import com.cavaleiros.ginkano.usecase.AuthUsecase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Slf4j
 @Service
@@ -35,6 +36,7 @@ public class AuthUsecaseImpl implements AuthUsecase {
             log.info("Entidade retornada -> ".concat(responsibleUser.toString()));
             return UserTokenResponse.builder()
                     .data(responsibleUser)
+                    .date(LocalDateTime.now().toString())
                     .jwtToken(token)
                     .build();
 
@@ -43,7 +45,7 @@ public class AuthUsecaseImpl implements AuthUsecase {
            throw new InvalidPasswordException("Senha inválida");
         }catch (Exception e) {
             log.info("[AuthUsecase] - Erro no usecase", e);
-            throw new UseCaseException("Ocorreu um erro no usecase de Auth", e);
+            throw new UseCaseException("Ocorreu um erro no usecase de Auth ou o username não existe", e);
         }
     }
 

@@ -46,7 +46,8 @@ lastname VARCHAR(255) NOT NULL,
 conditions INTEGER NOT NULL,
 ocupacao VARCHAR(255) NOT NULL,
 password VARCHAR(255) NOT NULL,
-username VARCHAR(25) NOT NULL
+username VARCHAR(25) NOT NULL,
+ativo INTEGER DEFAULT 1
 );
 
 CREATE TABLE doacao (
