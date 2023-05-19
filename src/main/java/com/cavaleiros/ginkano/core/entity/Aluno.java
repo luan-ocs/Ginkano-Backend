@@ -8,8 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+
 @Entity
 @Table(name = "aluno")
+@Getter
 public class Aluno {
 
     @Id
