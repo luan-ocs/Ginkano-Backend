@@ -29,7 +29,7 @@ public class GroupUsecaseImpl extends BaseUsecase implements GroupUsecase {
     public GroupAllResponse execute(String auth) throws InvalidTokenException {
         validatedToken(auth);
 
-        List<Escola> escolas = repositorySchool.findAll();
+        List<Escola> escolas = repositorySchool.findAllByAtivo(1);
         List<GroupResponse> schools = new ArrayList<>();
 
         escolas.forEach(s -> schools.add(GroupAdapter.toSchoolResponse(s)));
