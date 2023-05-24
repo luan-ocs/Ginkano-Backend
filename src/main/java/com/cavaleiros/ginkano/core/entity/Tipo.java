@@ -1,9 +1,14 @@
 package com.cavaleiros.ginkano.core.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
 @Table(name = "tipo")
+@NoArgsConstructor
 public class Tipo {
 
     @Id

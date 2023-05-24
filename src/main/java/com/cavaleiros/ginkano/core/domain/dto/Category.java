@@ -15,5 +15,5 @@ import lombok.Setter;
 public class Category {
 
     String descricao;
-    Tipo tipo;
+    Type type;
 }

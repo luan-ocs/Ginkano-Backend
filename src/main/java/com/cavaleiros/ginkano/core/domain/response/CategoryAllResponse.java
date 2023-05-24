@@ -8,8 +8,8 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class CategoryAllResponse {
+public class CategoryAllResponse implements BodyResponse{
 
     List<CategoryResponse> data;
-    LocalDate localDate;
+    String localDate;
 }

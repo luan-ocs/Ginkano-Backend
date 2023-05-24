@@ -1,8 +1,7 @@
 package com.cavaleiros.ginkano.core.entity;
 
-import com.cavaleiros.ginkano.core.domain.constants.TipoEnum;
-
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -16,8 +15,11 @@ public class Categoria {
     private Long id;
     String descricao;
 
+    @JoinColumn(name = "fk_tipo")
     @ManyToOne
     Tipo tipo;
+
+    public Categoria(){}
 
     public Categoria(String descricao, Tipo tipo) {
         this.descricao = descricao;

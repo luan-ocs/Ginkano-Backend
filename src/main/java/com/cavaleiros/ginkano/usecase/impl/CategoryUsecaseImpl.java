@@ -36,7 +36,7 @@ public class CategoryUsecaseImpl implements CategoryUseCase{
 
         categorias.forEach(c -> categories.add(CategoryAdapter.toCategoryResponse(c)));
 
-        return CategoryAllResponse.builder().data(categories).localDate(LocalDate.now()).build();
+        return CategoryAllResponse.builder().data(categories).localDate(LocalDate.now().toString()).build();
     }
 
     @Override
