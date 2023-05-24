@@ -34,7 +34,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<BodyResponse> getUser(
             @RequestHeader final String authorization
     ){
