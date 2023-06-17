@@ -52,17 +52,11 @@ ativo INTEGER DEFAULT 1
 
 CREATE TABLE doacao (
 id SERIAL PRIMARY KEY,
-descricao VARCHAR(255) NOT NULL,
-quant_itens INTEGER NOT NULL,
-fk_aluno INTEGER REFERENCES aluno(id),
-fk_responsavel INTEGER REFERENCES responsavel(id),
-fk_produto INTEGER REFERENCES produto(id)
-);
-
-CREATE TABLE item (
-id SERIAL PRIMARY KEY,
-fk_produto INTEGER REFERENCES produto(id),
-fk_doacao INTEGER REFERENCES doacao(id)
+item VARCHAR(255) NOT NULL,
+doador VARCHAR(255) NOT NULL,
+quantidade INTEGER NOT NULL,
+pontos INTEGER NOT NULL,
+fk_escola INTEGER REFERENCES escola(id)
 );
 
 INSERT INTO escola (nome, endereco, token) VALUES ('Escola Municipal São João', 'Rua das Flores, 123', 'abc12');
@@ -115,17 +109,10 @@ INSERT INTO responsavel (firstname, lastname, conditions, ocupacao, password, us
 VALUES ('Ana', 'Gomes', 1, 'Oncologista', 'senha123', 'anagomes');
 
 
-INSERT INTO doacao (descricao, quant_itens, fk_aluno, fk_responsavel, fk_produto) VALUES
-('Doação 1', 3, 1, 1, 1),
-('Doação 2', 5, 2, 2, 2),
-('Doação 3', 1, 3, 3, 3),
-('Doação 4', 2, 4, 4, 4);
-
-INSERT INTO item (fk_produto, fk_doacao) VALUES
-(1, 1),
-(2, 1),
-(3, 2),
-(4, 2),
-(4, 3),
-(1, 4),
-(3, 4);
+INSERT INTO doacao (item, doador, quantidade, pontos, fk_escola)
+VALUES
+    ('Roupas', 'João Silva', 10, 50, 1),
+    ('Livros', 'Maria Souza', 20, 30, 2),
+    ('Brinquedos', 'Pedro Santos', 15, 25, 1),
+    ('Alimentos', 'Ana Rodrigues', 30, 40, 3),
+    ('Material Escolar', 'Carlos Oliveira', 25, 20, 2);

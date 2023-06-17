@@ -1,36 +1,31 @@
 package com.cavaleiros.ginkano.core.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+@Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "doacao")
 public class Doacao {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
-    String descricao;
-    Double quantItens;
+
+    private String item;
+    private String doador;
+    private Double quantidade;
+    private Long pontos;
 
     @ManyToOne
-    Aluno aluno;
-    @ManyToOne
-    Responsavel responsavel;
-
-    @ManyToOne
-    Produto produto;
-
-    public Doacao(String descricao, Double quantItens, Aluno aluno, Responsavel responsavel, Produto produto) {
-        this.descricao = descricao;
-        this.quantItens = quantItens;
-        this.aluno = aluno;
-        this.responsavel = responsavel;
-        this.produto = produto;
-    }
+    @JoinColumn(name = "fk_escola")
+    private Escola escola;
 }
