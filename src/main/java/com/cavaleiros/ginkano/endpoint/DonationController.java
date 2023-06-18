@@ -19,12 +19,11 @@ public class DonationController {
 
     @GetMapping("/all")
     public ResponseEntity<BodyResponse> getDonationAll(
-            @RequestHeader final String authorization,
             @RequestHeader final String token
     ){
 
         try{
-            DonationAllResponse donationAllResponse = donationUsecase.allDonations(authorization, token);
+            DonationAllResponse donationAllResponse = donationUsecase.allDonations(token);
             return ResponseEntity.ok(donationAllResponse);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(ErrorResponseAdapter.toErrorResponse(e, "400"));

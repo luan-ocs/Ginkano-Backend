@@ -11,5 +11,5 @@ public interface DonationUsecase {
     DonationResponse updateDonation(DonationRequest donation, String auth) throws InvalidTokenException;
     DonationResponse deleteDonation(DonationRequest donation, String auth);
     DonationResponse selectDonation(String code, String auth) throws InvalidTokenException;
-    DonationAllResponse allDonations(String auth, String token);
+    DonationAllResponse allDonations(String token);
 }

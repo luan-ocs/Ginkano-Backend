@@ -34,11 +34,10 @@ public class GroupController {
 
     @GetMapping("/")
     public ResponseEntity<BodyResponse> getGroup(
-            @RequestHeader final String token,
-            @RequestHeader final String authorization
+            @RequestHeader final String token
     ){
         try{
-            GroupResponse schoolResponse = groupUsecase.execute(token, authorization, Functions.SELECT);
+            GroupResponse schoolResponse = groupUsecase.executeId(token);
             return ResponseEntity.ok(schoolResponse);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(ErrorResponseAdapter.toErrorResponse(e, "400"));

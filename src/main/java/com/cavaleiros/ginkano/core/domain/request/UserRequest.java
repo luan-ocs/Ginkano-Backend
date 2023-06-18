@@ -12,9 +12,8 @@ import lombok.NoArgsConstructor;
 public class UserRequest {
 
     String username;
-    String password;
     String firstname;
     String lastname;
-    String ocupacao;
-    Integer conditions;
+    String ocupacao = "";
+    Integer conditions = 1;
 }

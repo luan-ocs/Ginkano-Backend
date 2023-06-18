@@ -15,4 +15,6 @@ public interface GroupUsecase {
     GroupResponse execute(GroupRequest groupRequest, String auth, String token) throws InvalidTokenException;
 
     GroupResponse execute(GroupRequest groupRequest, String auth) throws InvalidTokenException;
+
+    GroupResponse executeId(String token) throws InvalidTokenException;
 }

@@ -26,7 +26,6 @@ public class ResponsibleUserAdapter {
         responsavel.setLastname(user.getLastname());
         responsavel.setConditions(user.getConditions());
         responsavel.setOcupacao(user.getOcupacao());
-        responsavel.setPassword(user.getPassword());
         responsavel.setUsername(user.getUsername());
 
         return responsavel;

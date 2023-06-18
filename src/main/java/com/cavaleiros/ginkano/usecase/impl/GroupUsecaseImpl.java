@@ -87,4 +87,10 @@ public class GroupUsecaseImpl extends BaseUsecase implements GroupUsecase {
         repositorySchool.save(escola);
         return GroupResponse.builder().group(GroupAdapter.toSchool(escola)).build();
     }
+
+    @Override
+    public GroupResponse executeId(String token) throws InvalidTokenException {
+        Escola escola = repositorySchool.findEscolaByToken(token);
+        return GroupResponse.builder().group(GroupAdapter.toSchool(escola)).build();
+    }
 }

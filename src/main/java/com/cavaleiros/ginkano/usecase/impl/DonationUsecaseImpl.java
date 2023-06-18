@@ -77,7 +77,7 @@ public class DonationUsecaseImpl implements DonationUsecase {
     }
 
     @Override
-    public DonationAllResponse allDonations(String auth, String token) {
+    public DonationAllResponse allDonations(String token) {
         Escola escola = repositorySchool.findEscolaByToken(token);
         List<Doacao> doacoes = repositoryDonation.findAllByEscola(escola);
 
