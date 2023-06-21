@@ -16,8 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -80,8 +82,15 @@ public class DonationUsecaseImpl implements DonationUsecase {
     public DonationAllResponse allDonations(String token) {
         Escola escola = repositorySchool.findEscolaByToken(token);
         List<Doacao> doacoes = repositoryDonation.findAllByEscola(escola);
+        List<Doacao> doacoesAtivas = new ArrayList<>();
 
-        return DonationAdapter.fromDonationAllResponse(doacoes);
+        doacoes.forEach(e -> {
+            if(e.getEscola().getAtivo() == 1){
+                doacoesAtivas.add(e);
+            }
+        });
+
+        return DonationAdapter.fromDonationAllResponse(doacoesAtivas);
     }
 
     public void validatedToken(String auth) throws InvalidTokenException {
