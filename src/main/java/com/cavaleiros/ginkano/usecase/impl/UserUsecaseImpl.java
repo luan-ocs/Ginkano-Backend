@@ -1,8 +1,8 @@
 package com.cavaleiros.ginkano.usecase.impl;
 
 import com.cavaleiros.ginkano.adapter.ResponsibleUserAdapter;
+import com.cavaleiros.ginkano.config.JwtTokenUtil;
 import com.cavaleiros.ginkano.core.domain.constants.Functions;
-import com.cavaleiros.ginkano.core.domain.request.RegisterUserRequest;
 import com.cavaleiros.ginkano.core.domain.request.UserRequest;
 import com.cavaleiros.ginkano.core.domain.response.UserResponse;
 import com.cavaleiros.ginkano.core.domain.response.UserTokenResponse;
@@ -12,7 +12,6 @@ import com.cavaleiros.ginkano.exception.UseCaseException;
 import com.cavaleiros.ginkano.exception.UsernameInvalidException;
 import com.cavaleiros.ginkano.repository.RepositoryUser;
 import com.cavaleiros.ginkano.usecase.UserUsecase;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -21,10 +20,14 @@ import java.time.LocalDate;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class UserUsecaseImpl extends BaseUsecase implements UserUsecase {
 
     private final RepositoryUser repositoryUser;
+
+    public UserUsecaseImpl(JwtTokenUtil jwtTokenUtil, RepositoryUser repositoryUser) {
+        super(jwtTokenUtil);
+        this.repositoryUser = repositoryUser;
+    }
 
     @Override
     public UserResponse execute(String auth, Functions functions) throws InvalidTokenException {

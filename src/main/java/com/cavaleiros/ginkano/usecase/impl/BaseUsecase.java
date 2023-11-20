@@ -14,8 +14,8 @@ import java.util.Random;
 import java.util.Set;
 
 @Slf4j
-@NoArgsConstructor(force = true)
-public abstract class BaseUsecase {
+@RequiredArgsConstructor
+public class BaseUsecase {
 
     @Autowired
     protected final JwtTokenUtil jwtTokenUtil;

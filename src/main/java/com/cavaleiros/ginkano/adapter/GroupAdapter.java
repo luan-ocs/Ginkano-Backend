@@ -15,21 +15,6 @@ public class GroupAdapter {
                 .build();
     }
 
-    public static Escola toEscola(GroupRequest groupRequest){
-        return Escola.builder()
-                .nome(groupRequest.getNome())
-                .endereco(groupRequest.getEndereco())
-                .build();
-    }
-
-    public static Group fromGroupRequest(GroupRequest groupRequest) {
-        return Group.builder()
-                .nome(groupRequest.getNome())
-                .endereco(groupRequest.getEndereco())
-                .build();
-    }
-
-
     public static GroupResponse toSchoolResponse(Escola escola){
         return GroupResponse.builder()
                 .group(toSchool(escola))

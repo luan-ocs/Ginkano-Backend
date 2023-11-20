@@ -8,6 +8,7 @@ spring:
 server:
   max-http-header-size: 40KB
   port: 8080
+  host: localhost
   servlet:
     context-path: /ginkano-be
     encoding:

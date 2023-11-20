@@ -10,20 +10,25 @@ import com.cavaleiros.ginkano.core.entity.Escola;
 import com.cavaleiros.ginkano.exception.InvalidTokenException;
 import com.cavaleiros.ginkano.repository.RepositorySchool;
 import com.cavaleiros.ginkano.usecase.GroupUsecase;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class GroupUsecaseImpl extends BaseUsecase implements GroupUsecase {
 
     private final RepositorySchool repositorySchool;
+
+    public GroupUsecaseImpl(JwtTokenUtil jwtTokenUtil, RepositorySchool repositorySchool) {
+        super(jwtTokenUtil);
+        this.repositorySchool = repositorySchool;
+    }
 
     @Override
     public GroupAllResponse execute(String auth) throws InvalidTokenException {
